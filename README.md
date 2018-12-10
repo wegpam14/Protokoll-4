@@ -7,8 +7,8 @@
   
    
     
- **Anwesend:** Sarah Vezonik, Alois Vollmaier, Patrick Wegl, Mercedes Wesonig, Matthias Winter, Thomas Winter  
-  **Abwesend:** ---
+ **Anwesend:** Sarah Vezonik, Alois Vollmaier, Patrick Wegl, Mercedes Wesonig, Matthias Winter,  
+  **Abwesend:** Thomas Winter
 ***********************************************************************************************************************************
 
 
@@ -49,50 +49,57 @@ Bei *tab* ist sehr sehr wichtig, dass man einen echten Tabulator verwendet und d
 
 ### make im Terminal  
 Tippt man das **make** im Terminal ein, sucht es sich selbstständig, ob die angegebenen Zieler erreicht werden können. Weiters schaut es auch ob alle Dateien auf den neuesten Stand sind. Angenommen falls die *main.c* einen jüngeren Zeistempel als die *main.o* hat, dann wird alles neu compeliert und gelinkt. Falls man die Zeitstempel nahträglich ändern will, kann man dies mit *touch* tun.  
-#### Touch  
+
+#### Befehle
+```make``` -> führt das MakeTool aus  
+```make clean``` -> kann verwendet werden wenn "clean" im Makefile steht  
+```./(Name der Datei).elf /.exe``` ->führt die Anwendung aus (nicht nur für das MakeTool, jedoch bei der verwendung sehr Hilfreich)  
+
+
+
+### Touch  
 Mit touch kann man den Zeitstempel von Dateien ändern, d.h. auf die aktuelle Zeit bringen. Falls noch keine Datei vorhanden ist, erzeugt touch eine neue leere Datei.    
     
 Im Grunde läuft die Abbarbeitung eines Makefile's solange, solange kein Fehler auftritt. Falls doch ein Fehler auftritt wird die Abbarbeitung gestoppt. Dies kann speziell zu kritisch werden, wenn gerade ein Befehl ausgeführt wird. Um dieses Problem vorzubeugen, schreiben wir vor *rm* ein *-*. Dies führt dazu, dass auch bei einem Fehler, der Löschbefehl ausgeführt wird.  
 ********************************************************************************************************************************
 ## Übung mit dem make Tool  
 ### 1. Übung  
-Mithilfe des nano Editor und des make Tools, sollt "Guten Morgen" am Terminal ausgegeben werden.  
+Aufgabe war es ein Programm zu schreiben, welches "Programm Start" ausgeben soll.  
 **main.c:**  
 ```c
 #include <stdio.h>
 
 int main(){
-        printf("Guten Morgen\n");
+        printf("Programm start\n");
         return 0;
 }  
 ```   
 **Makefile**  
-```  
-# Hallo, das ist ein Kommentar
 
-test1: main.o
-        gcc -otest1 main.o
 
-main.o: main.c
+```ruby
+ue04.elf: main.o monitor.o lcd.o
+        gcc -o ue04.elf main.o monitor.o lcd.o  
+
+main.o: main.c monitor.h lcd.h
         gcc -c main.c
+        
+        
+monitor.o: monitor.c lcd.h
+        gcc -c monitor.c
+        
+lcd.o: lcd.c
+        gcc -c lcd.c
+        
+clean: 
+        rm *.o
+        rm *.elf
+```
 
-cleanAndBuild: clean test1
+Mit "gcc" findet die Kompilierung der Dateien statt.  
+Es werden Objektdateien wie z.B **main.o** aus **main.c** erstellt.
+   
 
-clean:
-        -rm main.o
-        -rm test1
-```  
-
-Nun kann man mittles dem *make* Befehl im Terminal, die Abarbeitung starten.    
-
-Befehl | Beschreibung  
------- | ------------    
-make clean | Alle, von *make* erstellten Dateien, werden gelöscht.   
-make cleanAndBuild |  Alle, von *make* erstellten Dateien, werden gelöscht und danach wieder erstellt.
-make main.o | Der Programmiercode wird in Maschinenbefehlt übersetzt.  
   
-### 2.Übung  
-Ein C-Programm für den Arduino Nano schreiben, das die LED blinken lässt. Hierfür werden mehrere Dateien benötigt, die man dann alle richtig im Makeflie abhängig machen muss.  
-**main.c**  
-```  
+
  
