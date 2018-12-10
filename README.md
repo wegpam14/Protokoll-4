@@ -9,6 +9,7 @@
     
  **Anwesend:** Sarah Vezonik, Alois Vollmaier, Patrick Wegl, Mercedes Wesonig, Matthias Winter,  
   **Abwesend:** Thomas Winter
+  
 ***********************************************************************************************************************************
 
 
@@ -102,7 +103,7 @@ Es werden Objektdateien wie z.B **main.o** aus **main.c** erstellt.
    
 
   ### Beschreibung von Schlüsselwörtern:
-  **#ifdef"" ; **#endif"** --> kann man Quelltextbereiche eingrenzen. Quelltext wird nur kompilliert, wenn eine bestimmte Konstante definiert wurde.
+  **#ifdef** ; **#endif** --> kann man Quelltextbereiche eingrenzen. Quelltext wird nur kompilliert, wenn eine bestimmte Konstante definiert wurde.
   **extern** deklariert eine Variable oder eine Funktion und gibt an, dass sie eine externe Verknüpfung hat.
 
  
