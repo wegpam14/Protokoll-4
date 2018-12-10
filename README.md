@@ -60,7 +60,8 @@ Tippt man das **make** im Terminal ein, sucht es sich selbstständig, ob die ang
 ### Touch  
 Mit touch kann man den Zeitstempel von Dateien ändern, d.h. auf die aktuelle Zeit bringen. Falls noch keine Datei vorhanden ist, erzeugt touch eine neue leere Datei.    
     
-Im Grunde läuft die Abbarbeitung eines Makefile's solange, solange kein Fehler auftritt. Falls doch ein Fehler auftritt wird die Abbarbeitung gestoppt. Dies kann speziell zu kritisch werden, wenn gerade ein Befehl ausgeführt wird. Um dieses Problem vorzubeugen, schreiben wir vor *rm* ein *-*. Dies führt dazu, dass auch bei einem Fehler, der Löschbefehl ausgeführt wird.  
+Im Grunde läuft die Abbarbeitung eines Makefile's solange, solange kein Fehler auftritt. Falls doch ein Fehler auftritt wird die Abbarbeitung gestoppt. Dies kann speziell zu kritisch werden, wenn gerade ein Befehl ausgeführt wird. Um dieses Problem vorzubeugen, schreiben wir vor *rm* ein *-*. Dies führt dazu, dass auch bei einem Fehler, der Löschbefehl ausgeführt wird. 
+Mit Touch lassen sich Zugriffs und änderungs-Zeitstempel con Dateien ändern. Existiert die von touch zu ändernder Datei nicht, wird diese neu angelegt. **touch** wird daher häufig auch zum Erstellen lerer Dateien verwendet.
 ********************************************************************************************************************************
 ## Übung mit dem make Tool  
 ### 1. Übung  
@@ -97,9 +98,11 @@ clean:
 ```
 
 Mit "gcc" findet die Kompilierung der Dateien statt.  
-Es werden Objektdateien wie z.B **main.o** aus **main.c** erstellt.
+Es werden Objektdateien wie z.B **main.o** aus **main.c** erstellt.  
    
 
-  
+  ### Beschreibung von Schlüsselwörtern:
+  **#ifdef"" ; **#endif"** --> kann man Quelltextbereiche eingrenzen. Quelltext wird nur kompilliert, wenn eine bestimmte Konstante definiert wurde.
+  **extern** deklariert eine Variable oder eine Funktion und gibt an, dass sie eine externe Verknüpfung hat.
 
  
